@@ -6,8 +6,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import br.com.colecao.games.orm.Console;
-import br.com.colecao.games.repository.ConsoleRepository;
 import br.com.colecao.games.service.CrudConsoleService;
 
 @SpringBootApplication
