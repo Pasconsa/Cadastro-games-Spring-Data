@@ -1,6 +1,7 @@
 package br.com.colecao.games.orm;
 
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -38,13 +39,14 @@ public class Console {
 	public void setMarca(String marca) {
 		this.marca = marca;
 	}
-	public int getAnolancamento() {
+
+	
+	public synchronized int getAnolancamento() {
 		return anolancamento;
 	}
-	public void setAnolancamento(int anolancamento) {
+	public synchronized void setAnolancamento(int anolancamento) {
 		this.anolancamento = anolancamento;
 	}
-	
 	@Override
 	public String toString() {
 		return "Console [id=" + id + ", nome=" + nome + ", marca=" + marca + ", anolancamento=" + anolancamento + "]";

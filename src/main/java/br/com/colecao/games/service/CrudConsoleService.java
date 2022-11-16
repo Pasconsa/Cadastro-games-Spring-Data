@@ -1,6 +1,7 @@
 package br.com.colecao.games.service;
 
 
+
 import java.util.Scanner;
 
 import org.springframework.stereotype.Service;
@@ -12,6 +13,8 @@ import br.com.colecao.games.repository.ConsoleRepository;
 public class CrudConsoleService {
 
 	private Boolean system = true;
+
+	
 	private final ConsoleRepository consoleRepository;
 
 	public CrudConsoleService(ConsoleRepository consoleRepository) {
@@ -51,11 +54,23 @@ public class CrudConsoleService {
 	}
 
 	public void salvar(Scanner scanner) {
-		System.out.println("nome console");
-		String nome = scanner.nextLine().toUpperCase();     //UpperCase para ficar padrão a forma que é salvo.
+		System.out.println("Digite nome console");
+		String nome = scanner.nextLine().toUpperCase();     
         nome += scanner.nextLine().toUpperCase();
+	
+		
+		System.out.println("Digite marca do console");
+		String marca = scanner.nextLine().toUpperCase();     
+		marca += scanner.nextLine().toUpperCase();
+		
+		System.out.println("Digite ano de lancameto 4 digitos");
+		int ano = scanner.nextInt();    
+		
 		Console console = new Console();
 		console.setNome(nome);
+		console.setMarca(marca);
+		console.setAnolancamento(ano);
+		
 		consoleRepository.save(console);
 		System.out.println("Salvo");
 	}
@@ -66,10 +81,21 @@ public class CrudConsoleService {
 		System.out.println("Nome do console");
 		String nome = scanner.nextLine().toUpperCase();     //UpperCase para ficar padrão a forma que é salvo.
         nome += scanner.nextLine().toUpperCase();
+        
+        System.out.println("Nome da marca");
+		String marca = scanner.nextLine().toUpperCase();     
+        marca += scanner.nextLine().toUpperCase();
+        
+        System.out.println("ano de lancamento");
+		int ano = scanner.nextInt();    
 		
 		Console console = new Console();
 		console.setId(id);
 		console.setNome(nome);
+		console.setMarca(marca);
+		console.setAnolancamento(ano);
+		
+		
 		consoleRepository.save(console);
 		System.out.println("Atualizado");
 
