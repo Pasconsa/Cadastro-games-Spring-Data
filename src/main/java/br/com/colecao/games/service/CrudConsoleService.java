@@ -24,6 +24,7 @@ public class CrudConsoleService {
 			System.out.println("0 - sair");
 			System.out.println("1 - Salvar");
 			System.out.println("2 - Atualizar");
+			System.out.println("3 - Visualisar");
 
 			int acao = scanner.nextInt();
 
@@ -33,6 +34,9 @@ public class CrudConsoleService {
 				break;
 			case 2:
 				atualizar(scanner);
+				break;
+			case 3:
+				visualizar();
 				break;
 			default:
 				system = false;
@@ -65,6 +69,12 @@ public class CrudConsoleService {
 		consoleRepository.save(console);
 		System.out.println("Atualizado");
 
+	}
+	
+	
+	public void visualizar( ) {
+		Iterable<Console> consoles = consoleRepository.findAll();
+		consoles.forEach(console->System.out.println(console));
 	}
 
 }

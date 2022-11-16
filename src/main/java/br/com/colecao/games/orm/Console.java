@@ -45,6 +45,11 @@ public class Console {
 		this.anolancamento = anolancamento;
 	}
 	
+	@Override
+	public String toString() {
+		return "Console [id=" + id + ", nome=" + nome + ", marca=" + marca + ", anolancamento=" + anolancamento + "]";
+	}
+	
 	
 	
 	
