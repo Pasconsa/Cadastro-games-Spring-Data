@@ -25,6 +25,7 @@ public class CrudConsoleService {
 			System.out.println("1 - Salvar");
 			System.out.println("2 - Atualizar");
 			System.out.println("3 - Visualisar");
+			System.out.println("4 - Deletar");
 
 			int acao = scanner.nextInt();
 
@@ -37,6 +38,9 @@ public class CrudConsoleService {
 				break;
 			case 3:
 				visualizar();
+				break;
+			case 4:
+				deletar(scanner);
 				break;
 			default:
 				system = false;
@@ -75,6 +79,14 @@ public class CrudConsoleService {
 	public void visualizar( ) {
 		Iterable<Console> consoles = consoleRepository.findAll();
 		consoles.forEach(console->System.out.println(console));
+	}
+	
+	
+	public void deletar (Scanner scanner) {
+		System.out.println("Digite ID");
+		int id = scanner.nextInt();
+		consoleRepository.deleteById(id);
+		System.out.println("Deletado");
 	}
 
 }
