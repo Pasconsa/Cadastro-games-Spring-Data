@@ -19,7 +19,7 @@ public class CrudMidiaFisicaService {
 
 	public void inicial(Scanner scanner) {
 		while (system) {
-			System.out.println("Qual acao Console executar");
+			System.out.println("Qual acao tipo Midia executar");
 			System.out.println("0 - sair");
 			System.out.println("1 - Salvar");
 			System.out.println("2 - Atualizar");

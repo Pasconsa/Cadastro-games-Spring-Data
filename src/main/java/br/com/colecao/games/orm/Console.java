@@ -2,10 +2,13 @@ package br.com.colecao.games.orm;
 
 
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,7 +22,8 @@ public class Console {
 	private String marca;
 	private int anolancamento;
 	
-	
+	@OneToMany(mappedBy = "console")
+	private List <Game> game;
 	
 	public Integer getId() {
 		return id;
@@ -40,16 +44,26 @@ public class Console {
 		this.marca = marca;
 	}
 	
-	public synchronized int getAnolancamento() {
+	public int getAnolancamento() {
 		return anolancamento;
 	}
-	public synchronized void setAnolancamento(int anolancamento) {
+	public  void setAnolancamento(int anolancamento) {
 		this.anolancamento = anolancamento;
 	}
+	
+	public List<Game> getGame() {
+		return game;
+	}
+	public void setGame(List<Game> game) {
+		this.game = game;
+	}
+	
 	@Override
 	public String toString() {
 		return "Console [id=" + id + ", nome=" + nome + ", marca=" + marca + ", anolancamento=" + anolancamento + "]";
 	}
+	
+	
 	
 	
 	

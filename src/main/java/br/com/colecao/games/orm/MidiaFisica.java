@@ -1,9 +1,12 @@
 package br.com.colecao.games.orm;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,26 +18,36 @@ public class MidiaFisica {
 	private Integer id;
 	private String tipoMidia;
 	
+	@OneToMany(mappedBy = "midiaFisica")
+	private List <Game> game;
 	
 	
-	public synchronized Integer getId() {
+	public Integer getId() {
 		return id;
 	}
-	public synchronized void setId(Integer id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	public synchronized String getTipoMidia() {
+	public String getTipoMidia() {
 		return tipoMidia;
 	}
-	public synchronized void setTipoMidia(String tipoMidia) {
+	public void setTipoMidia(String tipoMidia) {
 		this.tipoMidia = tipoMidia;
 	}
 	
+	
+	public List<Game> getGame() {
+		return game;
+	}
+	public void setGame(List<Game> game) {
+		this.game = game;
+	}
 	
 	@Override
 	public String toString() {
 		return "MidiaFisica [id=" + id + ", tipoMidia=" + tipoMidia + "]";
 	}
+	
 	
 	
 
