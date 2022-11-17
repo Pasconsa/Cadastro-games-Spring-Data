@@ -39,7 +39,6 @@ public class Console {
 	public void setMarca(String marca) {
 		this.marca = marca;
 	}
-
 	
 	public synchronized int getAnolancamento() {
 		return anolancamento;
