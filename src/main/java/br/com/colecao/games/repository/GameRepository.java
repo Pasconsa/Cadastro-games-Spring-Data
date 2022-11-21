@@ -2,13 +2,17 @@ package br.com.colecao.games.repository;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.stereotype.Repository;
 
 import br.com.colecao.games.orm.Game;
 
-//Derived Query
-public interface GameRepository extends CrudRepository<Game, Integer> {
+@Repository
+public interface GameRepository extends PagingAndSortingRepository<Game, Integer>, JpaSpecificationExecutor<Game> {
+
+//Derived Query	
 List<Game> findByNome(String nome);
 
 //Jpql Query

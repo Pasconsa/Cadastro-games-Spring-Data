@@ -1,9 +1,14 @@
 package br.com.colecao.games.service;
 
 
+
 import java.util.Optional;
 import java.util.Scanner;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import br.com.colecao.games.orm.Console;
@@ -12,6 +17,7 @@ import br.com.colecao.games.orm.MidiaFisica;
 import br.com.colecao.games.repository.ConsoleRepository;
 import br.com.colecao.games.repository.GameRepository;
 import br.com.colecao.games.repository.MidiaFisicaRepository;
+
 
 @Service
 public class CrudGameService {
@@ -51,7 +57,7 @@ public class CrudGameService {
 	                atualizar(sc);
 	                break;
 	            case 3:
-	                visualizar();
+	                visualizar(sc);
 	                break;
 	            case 4:
 	                deletar(sc);
@@ -146,11 +152,18 @@ public class CrudGameService {
 	    }
 	    
 	    
-	    private void visualizar() {
-	    	Iterable<Game> games = gameRepository.findAll();
+	    private void visualizar(Scanner sc) {
+	    	System.out.println("Qual pagina voce deseja visualizar");
+	    	Integer page = sc.nextInt();
+	    
+	    	Pageable pageable = PageRequest.of(page, 3, Sort.by(Sort.Direction.ASC, "nome"));
+	        Page<Game> games = gameRepository.findAll(pageable);
+	        
+	        System.out.println(games);
+	        System.out.println("Pagina atual " + games.getNumber());
+	        System.out.println("Total elemento " + games.getTotalElements());
 	        games.forEach(game -> System.out.println(game));
 	    }
-
 	    	
 	    
 	    private void deletar(Scanner sc) {
