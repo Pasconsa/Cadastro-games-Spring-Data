@@ -8,6 +8,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 import br.com.colecao.games.orm.Game;
+import br.com.colecao.games.orm.GameProdutoraProjecao;
 
 @Repository
 public interface GameRepository extends PagingAndSortingRepository<Game, Integer>, JpaSpecificationExecutor<Game> {
@@ -23,6 +24,10 @@ List <Game> findByNomeProdutoraAnoLancamentoGames (String nome, String produtora
 @Query(value = "SELECT * FROM games g WHERE g.ano_lancamento >= :anoLancamento", nativeQuery = true)
 List <Game> findAnoLancamentoMaior(int anoLancamento);
 
+//Native Query
+//Projeção atrbutos minha escolha
+@Query (value = "SELECT g.id, g.nome, g.produtora FROM games g", nativeQuery = true)
+	List<GameProdutoraProjecao> findGameProdutora();
 
 }
 

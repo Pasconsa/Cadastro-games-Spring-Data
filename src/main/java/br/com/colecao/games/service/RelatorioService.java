@@ -6,6 +6,7 @@ import java.util.Scanner;
 import org.springframework.stereotype.Service;
 
 import br.com.colecao.games.orm.Game;
+import br.com.colecao.games.orm.GameProdutoraProjecao;
 import br.com.colecao.games.repository.GameRepository;
 
 @Service
@@ -27,6 +28,7 @@ public class RelatorioService {
 		System.out.println("1 - Buscar Game por nome");
 		System.out.println("2 - Buscar Game por nome, produtora, ano de lancamento.");
 		System.out.println("3 - Buscar data de lancamento de game apatir de qual ano.");
+		System.out.println("4 - Pesquisa game produtora.");
 		
 		int action = sc.nextInt();
 		
@@ -39,6 +41,9 @@ public class RelatorioService {
 			break;
 		case 3:
 			buscaDataLancamento(sc);
+			break;
+		case 4:
+			pesquisaGameProdutora();
 			break;
 		default:
 			system = false;
@@ -79,6 +84,11 @@ public class RelatorioService {
 		
 		List<Game> list = gameRepository.findAnoLancamentoMaior(ano);
 		list.forEach(System.out::println);
+	}
+	
+	private void pesquisaGameProdutora() {
+		List<GameProdutoraProjecao> list = gameRepository.findGameProdutora();
+		list.forEach(g-> System.out.println("Game: id: " + g.getId() + " | nome: " + g.getNome() +" | produtora: " + g.getProdutora()));
 	}
 
 }
