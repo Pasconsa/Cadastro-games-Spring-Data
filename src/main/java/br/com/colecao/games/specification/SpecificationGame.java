@@ -10,4 +10,20 @@ public class SpecificationGame {
 		return (root, criteriaQuery, criteriaBuilder) ->
 			criteriaBuilder.like(root.get("nome"), "%" + nome + "%");
 	}
+	
+	public static Specification<Game>produtora(String produtora) {
+		return (root, criteriaQuery, criteriaBuilder) ->
+			criteriaBuilder.equal(root.get("produtora"), produtora);
+	}
+	
+	public static Specification<Game>genero(String genero) {
+		return (root, criteriaQuery, criteriaBuilder) ->
+			criteriaBuilder.equal(root.get("genero"), genero);
+	}
+	
+	public static Specification<Game>dataLancamento(int dataLancamento) {
+		return (root, criteriaQuery, criteriaBuilder) ->
+			criteriaBuilder.greaterThan(root.get("dataLancamento"), dataLancamento);
+	}
+	
 }
