@@ -50,11 +50,7 @@ public class RelatorioGameDinamico {
 		System.out.println("Digite o ano de lançamento");
 		int anoLancamento = scanner.nextInt();
 		
-		//observar esta estrutura testar
-		if(anoLancamento == 0) {
-			anoLancamento = (Integer) null;
-		}
-		
+	
 		
 		List<Game> games = gameRepository.findAll(Specification
 				.where

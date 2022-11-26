@@ -23,7 +23,7 @@ public class SpecificationGame {
 	
 	public static Specification<Game>dataLancamento(int dataLancamento) {
 		return (root, criteriaQuery, criteriaBuilder) ->
-			criteriaBuilder.greaterThan(root.get("dataLancamento"), dataLancamento);
+			criteriaBuilder.equal(root.get("anoLancamento"), dataLancamento);
 	}
 	
 }

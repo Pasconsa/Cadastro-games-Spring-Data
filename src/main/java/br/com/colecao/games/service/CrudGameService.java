@@ -156,7 +156,7 @@ public class CrudGameService {
 	    	System.out.println("Qual pagina voce deseja visualizar");
 	    	Integer page = sc.nextInt();
 	    
-	    	Pageable pageable = PageRequest.of(page, 3, Sort.by(Sort.Direction.ASC, "nome"));
+	    	Pageable pageable = PageRequest.of(page, 10, Sort.by(Sort.Direction.ASC, "nome"));
 	        Page<Game> games = gameRepository.findAll(pageable);
 	        
 	        System.out.println(games);
